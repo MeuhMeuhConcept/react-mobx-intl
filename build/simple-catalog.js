@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class SimpleCatalog {
+export class SimpleCatalog {
     constructor(locale, messages) {
         this._status = 'waiting';
         this._locale = locale;
@@ -19,4 +17,3 @@ class SimpleCatalog {
         this._status = 'ready';
     }
 }
-exports.SimpleCatalog = SimpleCatalog;

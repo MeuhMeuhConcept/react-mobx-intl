@@ -1,14 +1,12 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const mobx_1 = require("mobx");
-const multiple_catalog_1 = require("./multiple-catalog");
-class LocaleStore {
+import { observable, action, when } from 'mobx';
+import { MultipleCatalog } from './multiple-catalog';
+export class LocaleStore {
     constructor(locales) {
         this.status = 'waiting';
         this.locale = '';
@@ -16,7 +14,7 @@ class LocaleStore {
         this.catalogs = [];
         for (const locale of locales) {
             if (this.getCatalog(locale) === null) {
-                this.catalogs.push(new multiple_catalog_1.MultipleCatalog(locale));
+                this.catalogs.push(new MultipleCatalog(locale));
             }
         }
     }
@@ -33,7 +31,7 @@ class LocaleStore {
         }
         this.status = 'updating';
         if (catalog.status !== 'ready') {
-            mobx_1.when(() => catalog.status === 'ready', () => {
+            when(() => catalog.status === 'ready', () => {
                 this.changeCurrentCatalog(catalog);
             });
             catalog.prepare();
@@ -45,7 +43,7 @@ class LocaleStore {
         this.locale = catalog.locale;
         this.messages = catalog.messages;
         this.status = 'ready';
-        mobx_1.when(() => catalog.status !== 'ready', () => {
+        when(() => catalog.status !== 'ready', () => {
             this.changeLocale(catalog.locale);
         });
     }
@@ -59,21 +57,20 @@ class LocaleStore {
     }
 }
 __decorate([
-    mobx_1.observable
+    observable
 ], LocaleStore.prototype, "status", void 0);
 __decorate([
-    mobx_1.observable
+    observable
 ], LocaleStore.prototype, "locale", void 0);
 __decorate([
-    mobx_1.observable
+    observable
 ], LocaleStore.prototype, "messages", void 0);
 __decorate([
-    mobx_1.action
+    action
 ], LocaleStore.prototype, "addCatalog", null);
 __decorate([
-    mobx_1.action
+    action
 ], LocaleStore.prototype, "changeLocale", null);
 __decorate([
-    mobx_1.action.bound
+    action.bound
 ], LocaleStore.prototype, "changeCurrentCatalog", null);
-exports.LocaleStore = LocaleStore;
