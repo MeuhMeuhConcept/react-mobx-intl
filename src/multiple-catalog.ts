@@ -1,7 +1,7 @@
 import { Catalog, CatalogMessages, CatalogStatus } from './catalog'
 import { observable, when } from 'mobx'
 
-export default class MultipleCatalog implements Catalog {
+export class MultipleCatalog implements Catalog {
     private _locale: string
     private _catalogs: Catalog[] = []
     @observable status: CatalogStatus = 'waiting'

@@ -1,6 +1,6 @@
 import { Catalog, CatalogMessages, CatalogStatus } from './catalog'
 
-export default class SimpleCatalog implements Catalog {
+export class SimpleCatalog implements Catalog {
     private _locale: string
     private _messages: CatalogMessages
     private _status: CatalogStatus = 'waiting'

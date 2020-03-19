@@ -19,4 +19,4 @@ class SimpleCatalog {
         this._status = 'ready';
     }
 }
-exports.default = SimpleCatalog;
+exports.SimpleCatalog = SimpleCatalog;

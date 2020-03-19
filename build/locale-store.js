@@ -5,12 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mobx_1 = require("mobx");
-const multiple_catalog_1 = __importDefault(require("./multiple-catalog"));
+const multiple_catalog_1 = require("./multiple-catalog");
 class LocaleStore {
     constructor(locales) {
         this.status = 'waiting';
@@ -19,7 +16,7 @@ class LocaleStore {
         this.catalogs = [];
         for (const locale of locales) {
             if (this.getCatalog(locale) === null) {
-                this.catalogs.push(new multiple_catalog_1.default(locale));
+                this.catalogs.push(new multiple_catalog_1.MultipleCatalog(locale));
             }
         }
     }
@@ -79,4 +76,4 @@ __decorate([
 __decorate([
     mobx_1.action.bound
 ], LocaleStore.prototype, "changeCurrentCatalog", null);
-exports.default = LocaleStore;
+exports.LocaleStore = LocaleStore;

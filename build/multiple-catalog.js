@@ -56,4 +56,4 @@ class MultipleCatalog {
 __decorate([
     mobx_1.observable
 ], MultipleCatalog.prototype, "status", void 0);
-exports.default = MultipleCatalog;
+exports.MultipleCatalog = MultipleCatalog;

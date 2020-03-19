@@ -1,19 +1,19 @@
 import { observable, action, computed, when, observe } from 'mobx'
 import { Catalog, CatalogMessages, CatalogStatus } from './catalog'
-import MultiCatalog from './multiple-catalog'
+import { MultipleCatalog } from './multiple-catalog'
 
-export default class LocaleStore {
+export class LocaleStore {
     @observable status: CatalogStatus = 'waiting'
 
     @observable locale: string = ''
     @observable messages: CatalogMessages = {}
 
-    catalogs: MultiCatalog[] = []
+    catalogs: MultipleCatalog[] = []
 
     constructor (locales: string[]) {
         for (const locale of locales) {
             if (this.getCatalog(locale) === null) {
-                this.catalogs.push(new MultiCatalog(locale))
+                this.catalogs.push(new MultipleCatalog(locale))
             }
         }
     }
@@ -58,7 +58,7 @@ export default class LocaleStore {
         })
     }
 
-    getCatalog (locale: string): MultiCatalog | null {
+    getCatalog (locale: string): MultipleCatalog | null {
         for (const catalog of this.catalogs) {
             if (catalog.locale === locale) {
                 return catalog

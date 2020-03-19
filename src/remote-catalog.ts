@@ -2,7 +2,7 @@ import { Catalog, CatalogStatus } from './catalog'
 import { SimpleLoader } from 'react-mobx-loader'
 import { when } from 'mobx'
 
-export default class RemoteCatalog implements Catalog {
+export class RemoteCatalog implements Catalog {
     private _locale: string
     private _messages: {[key: string]: string} = {}
     private _loader: SimpleLoader

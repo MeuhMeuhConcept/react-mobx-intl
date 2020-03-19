@@ -2,7 +2,7 @@ import * as React from 'react'
 import { IntlProvider } from 'react-intl'
 import { inject, observer } from 'mobx-react'
 import { Loader, LoaderRequest } from 'react-mobx-loader'
-import LocaleStore from './locale-store'
+import { LocaleStore } from './locale-store'
 
 interface Props {
     locale?: LocaleStore

@@ -36,4 +36,4 @@ class RemoteCatalog {
         }
     }
 }
-exports.default = RemoteCatalog;
+exports.RemoteCatalog = RemoteCatalog;
