@@ -3401,10 +3401,10 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
 
-react-mobx-loader@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-mobx-loader/-/react-mobx-loader-1.1.0.tgz#ccb96a8868027211d143110181806a388bdf5898"
-  integrity sha512-m7u1B29+/lSoAJcyWc0mtIARWhGnUSKzjp1eTEfzZRbHjbpyxW9bolhykBURvA+vVKLvog847zbpbCLxv4pp2w==
+react-mobx-loader@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-mobx-loader/-/react-mobx-loader-1.2.0.tgz#5f3bc2ed45854f3ba5604033267ff5f8035b6224"
+  integrity sha512-Xlwrq6zmQ7l6PUt9NAXIyKMrATUTIfzmcJrH6MVZ8TrlL8kDlAHT78HXctErN78S7Ii2lp7XjLVa0i8fV6xxHw==
   dependencies:
     classnames "^2.2.6"
     mobx "^5.15.4"
