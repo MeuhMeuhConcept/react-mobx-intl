@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { IntlProvider } from 'react-intl'
 import { inject, observer } from 'mobx-react'
-import { CatalogAwaiter } from './catalog-awaiter'
+import CatalogAwaiter from './catalog-awaiter'
 import { LocaleStore } from './locale-store'
 
 interface Props {
