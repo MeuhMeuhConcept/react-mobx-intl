@@ -86,4 +86,8 @@ export class LocaleStore {
 
         return []
     }
+
+    hasDomain (domain: string): boolean {
+        return this.domains.indexOf(domain) >= 0
+    }
 }

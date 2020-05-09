@@ -69,6 +69,9 @@ export class LocaleStore {
         }
         return [];
     }
+    hasDomain(domain) {
+        return this.domains.indexOf(domain) >= 0;
+    }
 }
 __decorate([
     observable

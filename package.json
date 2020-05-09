@@ -1,6 +1,6 @@
 {
   "name": "react-mobx-intl",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "build/index.js",
   "typings": "src/index",
   "repository": "git@github.com:MeuhMeuhConcept/react-mobx-intl.git",
