@@ -13,6 +13,18 @@ interface State {}
 
 export class MobxIntlProvider extends React.Component<Props, State> {
 
+    componentDidMount () {
+        if (this.props.locale) {
+            this.props.locale.refreshActiveDomains()
+        }
+    }
+
+    componentDidUpdate () {
+        if (this.props.locale) {
+            this.props.locale.refreshActiveDomains()
+        }
+    }
+
     render () {
 
         let { domain } = this.props
@@ -22,14 +34,14 @@ export class MobxIntlProvider extends React.Component<Props, State> {
         }
 
         return (
-            <CatalogAwaiter domain={domain} >
-                <IntlProvider
-                    locale={this.props.locale ? this.props.locale.locale : ''}
-                    messages={this.props.locale ? this.props.locale.messages : {}}
-                >
+            <IntlProvider
+                locale={this.props.locale ? this.props.locale.locale : ''}
+                messages={this.props.locale ? this.props.locale.messages : {}}
+            >
+                <CatalogAwaiter domain={domain} >
                     { this.props.children }
-                </IntlProvider>
-            </CatalogAwaiter>
+                </CatalogAwaiter>
+            </IntlProvider>
         )
     }
 }

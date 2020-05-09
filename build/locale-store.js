@@ -12,6 +12,7 @@ export class LocaleStore {
         this.locale = '';
         this.messages = {};
         this.catalogs = [];
+        this.activeDomains = [];
         for (const locale of locales) {
             if (this.getCatalog(locale) === null) {
                 this.catalogs.push(new MultipleCatalog(locale));
@@ -72,6 +73,28 @@ export class LocaleStore {
     hasDomain(domain) {
         return this.domains.indexOf(domain) >= 0;
     }
+    refreshActiveDomains() {
+        this.activeDomains = [];
+        for (const domain of this.domains) {
+            const catalogs = this.getCatalogsByDomain(domain);
+            let ready = true;
+            if (catalogs.length === 0) {
+                ready = false;
+            }
+            for (const c of catalogs) {
+                if (c.status !== 'ready') {
+                    ready = false;
+                }
+            }
+            if (ready) {
+                this.activeDomains.push(domain);
+            }
+        }
+        this.activeDomains = this.domains;
+    }
+    hasActiveDomain(domain) {
+        return this.activeDomains.indexOf(domain) >= 0;
+    }
 }
 __decorate([
     observable
@@ -82,6 +105,9 @@ __decorate([
 __decorate([
     observable
 ], LocaleStore.prototype, "messages", void 0);
+__decorate([
+    observable
+], LocaleStore.prototype, "activeDomains", void 0);
 __decorate([
     action
 ], LocaleStore.prototype, "addCatalog", null);
@@ -94,3 +120,6 @@ __decorate([
 __decorate([
     computed
 ], LocaleStore.prototype, "domains", null);
+__decorate([
+    action
+], LocaleStore.prototype, "refreshActiveDomains", null);

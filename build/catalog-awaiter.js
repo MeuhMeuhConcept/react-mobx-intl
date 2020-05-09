@@ -5,14 +5,8 @@ export class CatalogAwaiter extends React.Component {
         if (!this.props.locale) {
             return this.fallback;
         }
-        const catalogs = this.props.locale.getCatalogsByDomain(this.props.domain);
-        if (catalogs.length === 0) {
+        if (!this.props.locale.hasActiveDomain(this.props.domain)) {
             return this.fallback;
-        }
-        for (const c of catalogs) {
-            if (c.status !== 'ready') {
-                return this.fallback;
-            }
         }
         return (React.createElement(React.Fragment, null, this.props.children));
     }
