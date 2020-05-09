@@ -1,23 +1,19 @@
 import { Catalog, CatalogStatus } from './catalog'
 import { JsonLoader } from 'react-mobx-loader'
 import { when } from 'mobx'
+import { AbstractCatalog } from './abstract-catalog'
 
-export class RemoteCatalog implements Catalog {
-    private _locale: string
+export class RemoteCatalog extends AbstractCatalog {
     private _messages: {[key: string]: string} = {}
     private _loader: JsonLoader
 
-    constructor (locale: string, url: string) {
-        this._locale = locale
+    constructor (locale: string, url: string, domains: string[] = ['default']) {
+        super(locale, domains)
         this._loader = new JsonLoader(url, false)
 
         when(() => this._loader.status === 'done', () => {
             this._messages = this._loader.responseData
         })
-    }
-
-    get locale () {
-        return this._locale
     }
 
     get status (): CatalogStatus {

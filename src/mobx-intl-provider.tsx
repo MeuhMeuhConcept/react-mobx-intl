@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { IntlProvider } from 'react-intl'
 import { inject, observer } from 'mobx-react'
-import { Loader, LoaderRequest } from 'react-mobx-loader'
+import { CatalogAwaiter } from './catalog-awaiter'
 import { LocaleStore } from './locale-store'
 
 interface Props {
     locale?: LocaleStore
+    domain?: string
 }
 
 interface State {}
@@ -13,21 +14,22 @@ interface State {}
 export class MobxIntlProvider extends React.Component<Props, State> {
 
     render () {
-        const loadingInformation: LoaderRequest.Informations = {
-            progress: 0,
-            errors: [],
-            status: this.props.locale && this.props.locale.status === 'ready' ? 'done' : 'pending'
+
+        let { domain } = this.props
+
+        if (!domain) {
+            domain = 'default'
         }
 
         return (
-            <Loader loadingInformation={loadingInformation}>
-                <IntlProvider
-                    locale={this.props.locale ? this.props.locale.locale : ''}
-                    messages={this.props.locale ? this.props.locale.messages : {}}
-                >
+            <IntlProvider
+                locale={this.props.locale ? this.props.locale.locale : ''}
+                messages={this.props.locale ? this.props.locale.messages : {}}
+            >
+                <CatalogAwaiter domain={domain} >
                     { this.props.children }
-                </IntlProvider>
-            </Loader>
+                </CatalogAwaiter>
+            </IntlProvider>
         )
     }
 }

@@ -1,17 +1,13 @@
 import { Catalog, CatalogMessages, CatalogStatus } from './catalog'
+import { AbstractCatalog } from './abstract-catalog'
 
-export class SimpleCatalog implements Catalog {
-    private _locale: string
+export class SimpleCatalog extends AbstractCatalog {
     private _messages: CatalogMessages
     private _status: CatalogStatus = 'waiting'
 
-    constructor (locale: string, messages: CatalogMessages) {
-        this._locale = locale
+    constructor (locale: string, messages: CatalogMessages, domains: string[] = ['default']) {
+        super(locale, domains)
         this._messages = messages
-    }
-
-    get locale () {
-        return this._locale
     }
 
     get messages () {

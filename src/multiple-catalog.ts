@@ -1,5 +1,5 @@
 import { Catalog, CatalogMessages, CatalogStatus } from './catalog'
-import { observable, when } from 'mobx'
+import { observable, when, computed } from 'mobx'
 
 export class MultipleCatalog implements Catalog {
     private _locale: string
@@ -21,6 +21,18 @@ export class MultipleCatalog implements Catalog {
         }
     }
 
+    getCatalogsByDomain (domain: string): Catalog[] {
+        const catalogs: Catalog[] = []
+
+        for (const catalog of this._catalogs) {
+            if (catalog.hasDomain(domain)) {
+                catalogs.push(catalog)
+            }
+        }
+
+        return catalogs
+    }
+
     get locale () {
         return this._locale
     }
@@ -33,6 +45,21 @@ export class MultipleCatalog implements Catalog {
         }
 
         return messages
+    }
+
+    @computed
+    get domains (): string[] {
+        let domains: string[] = []
+
+        for (const catalog of this._catalogs) {
+            domains = domains.concat(catalog.domains)
+        }
+
+        return domains
+    }
+
+    hasDomain (domain: string): boolean {
+        return this.domains.indexOf(domain) >= 0
     }
 
     prepare () {

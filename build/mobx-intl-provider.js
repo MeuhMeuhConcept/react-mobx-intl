@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { IntlProvider } from 'react-intl';
 import { inject, observer } from 'mobx-react';
-import { Loader } from 'react-mobx-loader';
+import { CatalogAwaiter } from './catalog-awaiter';
 export class MobxIntlProvider extends React.Component {
     render() {
-        const loadingInformation = {
-            progress: 0,
-            errors: [],
-            status: this.props.locale && this.props.locale.status === 'ready' ? 'done' : 'pending'
-        };
-        return (React.createElement(Loader, { loadingInformation: loadingInformation },
-            React.createElement(IntlProvider, { locale: this.props.locale ? this.props.locale.locale : '', messages: this.props.locale ? this.props.locale.messages : {} }, this.props.children)));
+        let { domain } = this.props;
+        if (!domain) {
+            domain = 'default';
+        }
+        return (React.createElement(IntlProvider, { locale: this.props.locale ? this.props.locale.locale : '', messages: this.props.locale ? this.props.locale.messages : {} },
+            React.createElement(CatalogAwaiter, { domain: domain }, this.props.children)));
     }
 }
 export default inject('locale')(observer(MobxIntlProvider));

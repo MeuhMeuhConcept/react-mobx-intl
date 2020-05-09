@@ -1,11 +1,9 @@
-export class SimpleCatalog {
-    constructor(locale, messages) {
+import { AbstractCatalog } from './abstract-catalog';
+export class SimpleCatalog extends AbstractCatalog {
+    constructor(locale, messages, domains = ['default']) {
+        super(locale, domains);
         this._status = 'waiting';
-        this._locale = locale;
         this._messages = messages;
-    }
-    get locale() {
-        return this._locale;
     }
     get messages() {
         return this._messages;

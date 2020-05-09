@@ -67,4 +67,23 @@ export class LocaleStore {
 
         return null
     }
+
+    getCatalogsByDomain (domain: string): Catalog[] {
+        const mc = this.getCatalog(this.locale)
+        if (mc) {
+            return mc.getCatalogsByDomain(domain)
+        }
+
+        return []
+    }
+
+    @computed
+    get domains (): string[] {
+        const mc = this.getCatalog(this.locale)
+        if (mc) {
+            return mc.domains
+        }
+
+        return []
+    }
 }
