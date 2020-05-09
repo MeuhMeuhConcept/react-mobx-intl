@@ -33,6 +33,10 @@ export class MobxIntlProvider extends React.Component<Props, State> {
             domain = 'default'
         }
 
+        if (!this.props.locale || !this.props.locale.locale) {
+            return null
+        }
+
         return (
             <IntlProvider
                 locale={this.props.locale ? this.props.locale.locale : ''}
