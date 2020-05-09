@@ -8,8 +8,8 @@ export class MobxIntlProvider extends React.Component {
         if (!domain) {
             domain = 'default';
         }
-        return (React.createElement(IntlProvider, { locale: this.props.locale ? this.props.locale.locale : '', messages: this.props.locale ? this.props.locale.messages : {} },
-            React.createElement(CatalogAwaiter, { domain: domain }, this.props.children)));
+        return (React.createElement(CatalogAwaiter, { domain: domain },
+            React.createElement(IntlProvider, { locale: this.props.locale ? this.props.locale.locale : '', messages: this.props.locale ? this.props.locale.messages : {} }, this.props.children)));
     }
 }
 export default inject('locale')(observer(MobxIntlProvider));

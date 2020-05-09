@@ -22,14 +22,14 @@ export class MobxIntlProvider extends React.Component<Props, State> {
         }
 
         return (
-            <IntlProvider
-                locale={this.props.locale ? this.props.locale.locale : ''}
-                messages={this.props.locale ? this.props.locale.messages : {}}
-            >
-                <CatalogAwaiter domain={domain} >
+            <CatalogAwaiter domain={domain} >
+                <IntlProvider
+                    locale={this.props.locale ? this.props.locale.locale : ''}
+                    messages={this.props.locale ? this.props.locale.messages : {}}
+                >
                     { this.props.children }
-                </CatalogAwaiter>
-            </IntlProvider>
+                </IntlProvider>
+            </CatalogAwaiter>
         )
     }
 }
