@@ -34,7 +34,7 @@
     "mobx-react": "^6.1.8",
     "react": "^16.13.0",
     "react-intl": "^4.1.1",
-    "react-mobx-loader": "^1.2.0"
+    "react-mobx-loader": "^1.4.0"
   },
   "resolutions": {
     "lodash": "^4.17.19",
