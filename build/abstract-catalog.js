@@ -1,4 +1,6 @@
-export class AbstractCatalog {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class AbstractCatalog {
     constructor(locale, domains = ['default']) {
         this._locale = locale;
         this._domains = domains;
@@ -13,3 +15,4 @@ export class AbstractCatalog {
         return this.domains.indexOf(domain) >= 0;
     }
 }
+exports.AbstractCatalog = AbstractCatalog;

@@ -1,12 +1,14 @@
-import { JsonLoader } from 'react-mobx-loader';
-import { when } from 'mobx';
-import { AbstractCatalog } from './abstract-catalog';
-export class RemoteCatalog extends AbstractCatalog {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_mobx_loader_1 = require("react-mobx-loader");
+const mobx_1 = require("mobx");
+const abstract_catalog_1 = require("./abstract-catalog");
+class RemoteCatalog extends abstract_catalog_1.AbstractCatalog {
     constructor(locale, url, domains = ['default']) {
         super(locale, domains);
         this._messages = {};
-        this._loader = new JsonLoader(url, false);
-        when(() => this._loader.status === 'done', () => {
+        this._loader = new react_mobx_loader_1.JsonLoader(url, false);
+        mobx_1.when(() => this._loader.status === 'done', () => {
             this._messages = this._loader.responseData;
         });
     }
@@ -32,3 +34,4 @@ export class RemoteCatalog extends AbstractCatalog {
         }
     }
 }
+exports.RemoteCatalog = RemoteCatalog;

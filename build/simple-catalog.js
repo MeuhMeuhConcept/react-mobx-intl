@@ -1,5 +1,7 @@
-import { AbstractCatalog } from './abstract-catalog';
-export class SimpleCatalog extends AbstractCatalog {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const abstract_catalog_1 = require("./abstract-catalog");
+class SimpleCatalog extends abstract_catalog_1.AbstractCatalog {
     constructor(locale, messages, domains = ['default']) {
         super(locale, domains);
         this._status = 'waiting';
@@ -15,3 +17,4 @@ export class SimpleCatalog extends AbstractCatalog {
         this._status = 'ready';
     }
 }
+exports.SimpleCatalog = SimpleCatalog;
