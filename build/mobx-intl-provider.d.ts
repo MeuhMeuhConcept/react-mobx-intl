@@ -7,9 +7,7 @@ interface Props {
 interface State {
 }
 export declare class MobxIntlProvider extends React.Component<Props, State> {
-    componentDidMount(): void;
-    componentDidUpdate(): void;
-    render(): JSX.Element | null;
+    render(): JSX.Element;
 }
 declare const _default: typeof MobxIntlProvider & import("mobx-react").IWrappedComponent<Props>;
 export default _default;

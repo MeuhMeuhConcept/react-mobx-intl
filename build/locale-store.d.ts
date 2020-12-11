@@ -5,7 +5,6 @@ export declare class LocaleStore {
     locale: string;
     messages: CatalogMessages;
     catalogs: MultipleCatalog[];
-    activeDomains: string[];
     constructor(locales: string[]);
     addCatalog(catalog: Catalog): void;
     changeLocale(locale: string): void;
@@ -14,6 +13,6 @@ export declare class LocaleStore {
     getCatalogsByDomain(domain: string): Catalog[];
     get domains(): string[];
     hasDomain(domain: string): boolean;
-    refreshActiveDomains(): void;
+    get activeDomains(): string[];
     hasActiveDomain(domain: string): boolean;
 }

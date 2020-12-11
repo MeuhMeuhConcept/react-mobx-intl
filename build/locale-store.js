@@ -14,7 +14,6 @@ class LocaleStore {
         this.locale = '';
         this.messages = {};
         this.catalogs = [];
-        this.activeDomains = [];
         for (const locale of locales) {
             if (this.getCatalog(locale) === null) {
                 this.catalogs.push(new multiple_catalog_1.MultipleCatalog(locale));
@@ -75,8 +74,8 @@ class LocaleStore {
     hasDomain(domain) {
         return this.domains.indexOf(domain) >= 0;
     }
-    refreshActiveDomains() {
-        this.activeDomains = [];
+    get activeDomains() {
+        const activeDomains = [];
         for (const domain of this.domains) {
             const catalogs = this.getCatalogsByDomain(domain);
             let ready = true;
@@ -89,10 +88,10 @@ class LocaleStore {
                 }
             }
             if (ready) {
-                this.activeDomains.push(domain);
+                activeDomains.push(domain);
             }
         }
-        this.activeDomains = this.domains;
+        return activeDomains;
     }
     hasActiveDomain(domain) {
         return this.activeDomains.indexOf(domain) >= 0;
@@ -108,9 +107,6 @@ __decorate([
     mobx_1.observable
 ], LocaleStore.prototype, "messages", void 0);
 __decorate([
-    mobx_1.observable
-], LocaleStore.prototype, "activeDomains", void 0);
-__decorate([
     mobx_1.action
 ], LocaleStore.prototype, "addCatalog", null);
 __decorate([
@@ -123,6 +119,6 @@ __decorate([
     mobx_1.computed
 ], LocaleStore.prototype, "domains", null);
 __decorate([
-    mobx_1.action
-], LocaleStore.prototype, "refreshActiveDomains", null);
+    mobx_1.computed
+], LocaleStore.prototype, "activeDomains", null);
 exports.LocaleStore = LocaleStore;

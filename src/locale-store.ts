@@ -10,8 +10,6 @@ export class LocaleStore {
 
     catalogs: MultipleCatalog[] = []
 
-    @observable activeDomains: string[] = []
-
     constructor (locales: string[]) {
         for (const locale of locales) {
             if (this.getCatalog(locale) === null) {
@@ -93,10 +91,9 @@ export class LocaleStore {
         return this.domains.indexOf(domain) >= 0
     }
 
-    @action
-    refreshActiveDomains() {
-
-        this.activeDomains = []
+    @computed
+    get activeDomains (): string[] {
+        const activeDomains: string[] = []
 
         for (const domain of this.domains) {
             const catalogs = this.getCatalogsByDomain(domain)
@@ -114,11 +111,11 @@ export class LocaleStore {
             }
 
             if (ready) {
-                this.activeDomains.push(domain)
+                activeDomains.push(domain)
             }
         }
 
-        this.activeDomains = this.domains
+        return activeDomains
     }
 
     hasActiveDomain (domain: string): boolean {

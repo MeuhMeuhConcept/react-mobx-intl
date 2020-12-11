@@ -13,28 +13,12 @@ interface State {}
 
 export class MobxIntlProvider extends React.Component<Props, State> {
 
-    componentDidMount () {
-        if (this.props.locale) {
-            this.props.locale.refreshActiveDomains()
-        }
-    }
-
-    componentDidUpdate () {
-        if (this.props.locale) {
-            this.props.locale.refreshActiveDomains()
-        }
-    }
-
     render () {
 
         let { domain } = this.props
 
         if (!domain) {
             domain = 'default'
-        }
-
-        if (!this.props.locale || !this.props.locale.locale) {
-            return null
         }
 
         return (
