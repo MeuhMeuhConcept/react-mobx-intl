@@ -6,6 +6,7 @@ class SimpleCatalog extends abstract_catalog_1.AbstractCatalog {
         super(locale, domains);
         this._status = 'waiting';
         this._messages = messages;
+        this._status = 'ready';
     }
     get messages() {
         return this._messages;
@@ -14,7 +15,7 @@ class SimpleCatalog extends abstract_catalog_1.AbstractCatalog {
         return this._status;
     }
     prepare() {
-        this._status = 'ready';
+        // Nothing to do
     }
 }
 exports.SimpleCatalog = SimpleCatalog;

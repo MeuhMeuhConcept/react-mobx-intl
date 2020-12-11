@@ -8,6 +8,8 @@ export class SimpleCatalog extends AbstractCatalog {
     constructor (locale: string, messages: CatalogMessages, domains: string[] = ['default']) {
         super(locale, domains)
         this._messages = messages
+
+        this._status = 'ready'
     }
 
     get messages () {
@@ -19,6 +21,6 @@ export class SimpleCatalog extends AbstractCatalog {
     }
 
     prepare () {
-        this._status = 'ready'
+        // Nothing to do
     }
 }
