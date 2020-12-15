@@ -14,13 +14,14 @@ const React = __importStar(require("react"));
 const react_intl_1 = require("react-intl");
 const mobx_react_1 = require("mobx-react");
 const catalog_awaiter_1 = __importDefault(require("./catalog-awaiter"));
+const react_mobx_loader_1 = require("react-mobx-loader");
 class MobxIntlProvider extends React.Component {
     render() {
         let { domain } = this.props;
         if (!domain) {
             domain = 'default';
         }
-        return (React.createElement(react_intl_1.IntlProvider, { locale: this.props.locale && this.props.locale.locale ? this.props.locale.locale : 'en', messages: this.props.locale && this.props.locale.messages ? this.props.locale.messages : {} },
+        return (React.createElement(react_intl_1.IntlProvider, { locale: this.props.locale && this.props.locale.locale ? this.props.locale.locale : 'en', messages: this.props.locale && this.props.locale.messages ? this.props.locale.messages : {}, onError: react_mobx_loader_1.Manager.Manager.contentStrategy === 'show' ? () => { } : undefined },
             React.createElement(catalog_awaiter_1.default, { domain: domain }, this.props.children)));
     }
 }
