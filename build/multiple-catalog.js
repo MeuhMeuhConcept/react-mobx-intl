@@ -9,13 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mobx_1 = require("mobx");
 class MultipleCatalog {
     constructor(locale) {
-        this._catalogs = [];
+        this.catalogs = [];
         this.status = 'waiting';
         this._locale = locale;
     }
     addCatalog(catalog) {
         if (catalog.locale === this._locale) {
-            this._catalogs.push(catalog);
+            this.catalogs.push(catalog);
             this.refreshStatus();
             mobx_1.when(() => catalog.status === 'ready', () => {
                 this.refreshStatus();
@@ -24,7 +24,7 @@ class MultipleCatalog {
     }
     getCatalogsByDomain(domain) {
         const catalogs = [];
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             if (catalog.hasDomain(domain)) {
                 catalogs.push(catalog);
             }
@@ -36,14 +36,14 @@ class MultipleCatalog {
     }
     get messages() {
         let messages = {};
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             messages = { ...messages, ...catalog.messages };
         }
         return messages;
     }
     get domains() {
         let domains = [];
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             domains = domains.concat(catalog.domains);
         }
         return domains;
@@ -53,8 +53,8 @@ class MultipleCatalog {
     }
     prepare() {
         this.status = 'updating';
-        if (this._catalogs.length) {
-            for (const catalog of this._catalogs) {
+        if (this.catalogs.length) {
+            for (const catalog of this.catalogs) {
                 catalog.prepare();
             }
         }
@@ -63,7 +63,7 @@ class MultipleCatalog {
         }
     }
     refreshStatus() {
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             if (catalog.status === 'waiting' || catalog.status === 'updating') {
                 this.status = catalog.status;
                 return;
@@ -74,7 +74,16 @@ class MultipleCatalog {
 }
 __decorate([
     mobx_1.observable
+], MultipleCatalog.prototype, "catalogs", void 0);
+__decorate([
+    mobx_1.observable
 ], MultipleCatalog.prototype, "status", void 0);
+__decorate([
+    mobx_1.action
+], MultipleCatalog.prototype, "addCatalog", null);
+__decorate([
+    mobx_1.computed
+], MultipleCatalog.prototype, "messages", null);
 __decorate([
     mobx_1.computed
 ], MultipleCatalog.prototype, "domains", null);

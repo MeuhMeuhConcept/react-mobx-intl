@@ -1,18 +1,19 @@
 import { Catalog, CatalogMessages, CatalogStatus } from './catalog'
-import { observable, when, computed } from 'mobx'
+import { observable, when, computed, action } from 'mobx'
 
 export class MultipleCatalog implements Catalog {
     private _locale: string
-    private _catalogs: Catalog[] = []
+    @observable catalogs: Catalog[] = []
     @observable status: CatalogStatus = 'waiting'
 
     constructor (locale: string) {
         this._locale = locale
     }
 
+    @action
     addCatalog (catalog: Catalog) {
         if (catalog.locale === this._locale) {
-            this._catalogs.push(catalog)
+            this.catalogs.push(catalog)
 
             this.refreshStatus()
             when(() => catalog.status === 'ready', () => {
@@ -24,7 +25,7 @@ export class MultipleCatalog implements Catalog {
     getCatalogsByDomain (domain: string): Catalog[] {
         const catalogs: Catalog[] = []
 
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             if (catalog.hasDomain(domain)) {
                 catalogs.push(catalog)
             }
@@ -37,10 +38,11 @@ export class MultipleCatalog implements Catalog {
         return this._locale
     }
 
+    @computed
     get messages () {
         let messages: CatalogMessages = {}
 
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             messages = { ...messages, ...catalog.messages }
         }
 
@@ -51,7 +53,7 @@ export class MultipleCatalog implements Catalog {
     get domains (): string[] {
         let domains: string[] = []
 
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             domains = domains.concat(catalog.domains)
         }
 
@@ -65,8 +67,8 @@ export class MultipleCatalog implements Catalog {
     prepare () {
         this.status = 'updating'
 
-        if (this._catalogs.length) {
-            for (const catalog of this._catalogs) {
+        if (this.catalogs.length) {
+            for (const catalog of this.catalogs) {
                 catalog.prepare()
             }
         } else {
@@ -76,7 +78,7 @@ export class MultipleCatalog implements Catalog {
     }
 
     private refreshStatus () {
-        for (const catalog of this._catalogs) {
+        for (const catalog of this.catalogs) {
             if (catalog.status === 'waiting' || catalog.status === 'updating') {
                 this.status = catalog.status
                 return

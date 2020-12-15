@@ -1,7 +1,7 @@
 import { Catalog, CatalogMessages, CatalogStatus } from './catalog';
 export declare class MultipleCatalog implements Catalog {
     private _locale;
-    private _catalogs;
+    catalogs: Catalog[];
     status: CatalogStatus;
     constructor(locale: string);
     addCatalog(catalog: Catalog): void;
