@@ -9,13 +9,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __importStar(require("react"));
 const mobx_react_1 = require("mobx-react");
+const react_mobx_loader_1 = require("react-mobx-loader");
 class CatalogAwaiter extends React.Component {
     render() {
-        if (!this.props.locale) {
-            return this.fallback;
-        }
-        if (!this.props.locale.hasActiveDomain(this.props.domain)) {
-            return this.fallback;
+        if (react_mobx_loader_1.Manager.Manager.contentStrategy === 'wait') {
+            if (!this.props.locale) {
+                return this.fallback;
+            }
+            if (!this.props.locale.hasActiveDomain(this.props.domain)) {
+                return this.fallback;
+            }
         }
         return (React.createElement(React.Fragment, null, this.props.children));
     }
