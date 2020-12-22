@@ -3062,11 +3062,6 @@ mobx-react-lite@^2.2.0:
   resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-2.2.2.tgz#87c217dc72b4e47b22493daf155daf3759f868a6"
   integrity sha512-2SlXALHIkyUPDsV4VTKVR9DW7K3Ksh1aaIv3NrNJygTbhXe2A9GrcKHZ2ovIiOp/BXilOcTYemfHHZubP431dg==
 
-mobx-react-lite@^3.1.6:
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-3.1.6.tgz#e7f4809ab66edd1acca5adb00c6b88c600ae1952"
-  integrity sha512-MM3x9BLt5nC7iE/ILA5n2+hfrplEKYbFjqROEuGkzBdZP/KD+Z44+2gseczRrTG0xFuiPWfEzgT68+6/zqOiEw==
-
 mobx-react@^6.1.8:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-6.3.1.tgz#204f9756e42e19d91cb6598837063b7e7de87c52"
@@ -3074,22 +3069,10 @@ mobx-react@^6.1.8:
   dependencies:
     mobx-react-lite "^2.2.0"
 
-"mobx-react@^6.1.8 || 7.0.5":
-  version "7.0.5"
-  resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-7.0.5.tgz#a458ec3fd44349d398274eb08aec1abe9b5129ff"
-  integrity sha512-WmHl3Ni30ujVcOOnllmGmyccsbfFCKtAwpkIwncwxhgLcvXcE0Wa9lGJIhoqQdTJzGr0AJqGzMVAdwNc3Fj2DQ==
-  dependencies:
-    mobx-react-lite "^3.1.6"
-
 mobx@^5.15.4:
   version "5.15.7"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.15.7.tgz#b9a5f2b6251f5d96980d13c78e9b5d8d4ce22665"
   integrity sha512-wyM3FghTkhmC+hQjyPGGFdpehrcX1KOXsDuERhfK2YbJemkUhEB+6wzEN639T21onxlfYBmriA1PFnvxTUhcKw==
-
-"mobx@^5.15.4 || ^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.0.4.tgz#8fc3e3629a3346f8afddf5bd954411974744dad1"
-  integrity sha512-wT2QJT9tW19VSHo9x7RPKU3z/I2Ps6wUS8Kb1OO+kzmg7UY3n4AkcaYG6jq95Lp1R9ohjC/NGYuT2PtuvBjhFg==
 
 ms@2.0.0:
   version "2.0.0"
@@ -3543,7 +3526,7 @@ react-intl@*:
     intl-messageformat-parser "^4.1.0"
     shallow-equal "^1.2.1"
 
-react-intl@^5.10.9:
+react-intl@^5.10.6:
   version "5.10.9"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.10.9.tgz#cab8d9445059d3544cffc762c3e6af47ef9bc8ad"
   integrity sha512-DfUF4YMlZqaNRfgfvf46AcXxz7pDi7pkxRbQoimUJWEkjep+6QYLlH7ogypysGD1Sl5kbWi7b69bbG7wPqt1vA==
@@ -3566,15 +3549,15 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
 
-react-mobx-loader@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/react-mobx-loader/-/react-mobx-loader-1.7.0.tgz#e0ed06914873ec2f303271a4f54d246221d9bced"
-  integrity sha512-fFJ3HDzcj/r5nV/w9im2WWAihma5gODSryJycvjhT2Svjca9TgSDBMN9of+OtMkrY/hgoGJSUQmV80giejdfnQ==
+react-mobx-loader@^1.7.2:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/react-mobx-loader/-/react-mobx-loader-1.7.3.tgz#97067a53a883ccebba73e312aa6c56a863cff767"
+  integrity sha512-C3qNtYp2Xn6G2aU39+cQWWL6KtmBytdWN/ftY4E5TLME/yJVF6sp/wZkeIYyuyzPNRJ95mrI1qyRl8r39w94gw==
   dependencies:
     classnames "^2.2.6"
-    mobx "^5.15.4 || ^6.0.4"
-    mobx-react "^6.1.8 || 7.0.5"
-    react "^16.13.0 || ^17.0.1"
+    mobx "^5.15.4"
+    mobx-react "^6.1.8"
+    react "^16.13.0"
     rich-agent "^2.3.0"
 
 react@^16.13.0:
@@ -3585,14 +3568,6 @@ react@^16.13.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-"react@^16.13.0 || ^17.0.1":
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
-  integrity sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 read-pkg@^4.0.1:
   version "4.0.1"

@@ -1,6 +1,6 @@
 {
   "name": "react-mobx-intl",
-  "version": "1.11.3",
+  "version": "1.11.4",
   "main": "build/index.js",
   "typings": "build/index",
   "repository": "git@github.com:MeuhMeuhConcept/react-mobx-intl.git",
@@ -33,8 +33,8 @@
     "mobx": "^5.15.4",
     "mobx-react": "^6.1.8",
     "react": "^16.13.0",
-    "react-intl": "^5.10.9",
-    "react-mobx-loader": "^1.7.0"
+    "react-intl": "^5.10.6",
+    "react-mobx-loader": "^1.7.2"
   },
   "resolutions": {
     "lodash": "^4.17.19",
