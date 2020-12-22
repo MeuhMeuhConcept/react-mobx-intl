@@ -3471,7 +3471,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -3549,25 +3549,16 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
 
-react-mobx-loader@^1.7.2:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/react-mobx-loader/-/react-mobx-loader-1.7.3.tgz#97067a53a883ccebba73e312aa6c56a863cff767"
-  integrity sha512-C3qNtYp2Xn6G2aU39+cQWWL6KtmBytdWN/ftY4E5TLME/yJVF6sp/wZkeIYyuyzPNRJ95mrI1qyRl8r39w94gw==
+react-mobx-loader@^1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/react-mobx-loader/-/react-mobx-loader-1.7.4.tgz#a4c6fa0d0b6728a2bca220cc49a199456d93c52a"
+  integrity sha512-0NEagSLR2gFTqIlH0qxIUe+MhjK/+Fow6qG2z6XSOpaEGgodJqF1OwpwjQzOhhnT4GERbnKK//UoxFaJ8TgWhA==
   dependencies:
     classnames "^2.2.6"
     mobx "^5.15.4"
     mobx-react "^6.1.8"
-    react "^16.13.0"
+    react "^17.0.1"
     rich-agent "^2.3.0"
-
-react@^16.13.0:
-  version "16.14.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 react@^17.0.1:
   version "17.0.1"
