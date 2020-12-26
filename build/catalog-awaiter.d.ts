@@ -2,7 +2,7 @@ import * as React from 'react';
 import { LocaleStore } from './locale-store';
 interface Props {
     locale?: LocaleStore;
-    domain: string;
+    domain: string | string[];
     fallback?: React.ComponentType<any>;
 }
 interface State {

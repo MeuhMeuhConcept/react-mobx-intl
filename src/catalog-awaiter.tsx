@@ -5,7 +5,7 @@ import { Manager } from 'react-mobx-loader'
 
 interface Props {
     locale?: LocaleStore
-    domain: string
+    domain: string | string[]
     fallback?: React.ComponentType<any>
 }
 
@@ -19,8 +19,12 @@ export class CatalogAwaiter extends React.Component<Props, State> {
                 return this.fallback
             }
 
-            if (!this.props.locale.hasActiveDomain(this.props.domain)) {
-                return this.fallback
+            const domains = typeof this.props.domain === 'string' ? [this.props.domain] : this.props.domain
+
+            for (const domain of domains) {
+                if (!this.props.locale.hasActiveDomain(domain)) {
+                    return this.fallback
+                }
             }
         }
 
