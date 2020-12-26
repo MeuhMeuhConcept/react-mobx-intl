@@ -20,6 +20,9 @@ class MultipleCatalog {
             mobx_1.when(() => catalog.status === 'ready', () => {
                 this.refreshStatus();
             });
+            if (this.status !== 'waiting') {
+                catalog.prepare();
+            }
         }
     }
     getCatalogsByDomain(domain) {

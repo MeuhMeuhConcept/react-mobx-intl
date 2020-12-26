@@ -19,6 +19,10 @@ export class MultipleCatalog implements Catalog {
             when(() => catalog.status === 'ready', () => {
                 this.refreshStatus()
             })
+
+            if (this.status !== 'waiting') {
+                catalog.prepare()
+            }
         }
     }
 
